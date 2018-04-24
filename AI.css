@@ -1,0 +1,34 @@
+body {
+}
+
+.task_group{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #878787;
+    display: inline-block;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.collapse_able{
+    height: 1.2rem;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.collapse_able:active, .collapse_able:hover{
+	height: auto;
+}
+
+.Current_Code{
+    background-color: #EEEEFF;
+}
+
+.Start_Code{
+    background-color: #FFEEEE;
+}
+.Evolutions{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EEEEEE;
+}
