@@ -11,7 +11,7 @@ foreach (select_array('SELECT DISTINCT `SPECIES_NAME` FROM `SPECIES`;') as $spec
     if ($species != null && !empty($species)){
         $species_options .= "<option value='" . $species["SPECIES_NAME"] . "'>" . $species["SPECIES_NAME"] . "</option>";
     } else {
-       $species_options .= "<option value=''>--No species to load--</option>"; 
+       $species_options .= "<option value=''>--No species to load--</option>";
     }
 }
 
@@ -51,7 +51,7 @@ Permission of any other kind for the code is not given or implied. -->
 HTML;
 
 echo <<< HTML
-<div class="notification"><b>Notes</b>: 
+<div class="notification"><b>Notes</b>:
     <ul>
     <li>This experiment is still in alpha, and may take awhile to process. Process may end if you navigate away, progress notification not yet implemented; please be patient.</li>
     <li>Some mysqli warnings up above are expected. I'm working on a load/save feature that's not implemented yet. I'm enjoying this experiment and am still implementing. There may also be some other warnings that pop up if an AI evolves to do something that php isn't built to handle, this is fine, and they can be ignored (the AIs that produce unworking code will be culled by the next breed cycle.</li>
@@ -62,7 +62,7 @@ echo <<< HTML
     <li>So far, I was updating and experimenting with it, and have, to date, only gotten one AI that produced a reasonable output (that took many hours), so I consider the experiment potentially a success, but I don't know if it was a fluke, and have been improving the code to streamline it to try and get to a positive result sooner.</li>
     <li>Note: An earlier iteration of the AI got out of control and started injecting itself into ram and started re-writing the page (it didn't produce output in the expected place, but produced output in lots of other unplanned places until I found the evolutionary algorithm I was using had a recursive memory leak; I saved that code for later investigation because it was doing some pretty neat things I want to investigate when I get the time. I had a kill switch that worked, and ended it, but if you see the phrase "DEG" come up, repeating over and over, let me know. It was really interesting, and I'd be curious to see if it survived.</li>
     <li>You might also see "case" with numerical values repeatedly appearing at the top of the screen after a successful breed cycle. This is testing code I have put there that's tracking when and what type of mutations are happening.</li>
-    <li>Future plans: 
+    <li>Future plans:
         <ul>
         <li>Implement a save/load function</li>
         <li>Add additional instruction sets to choose from.</li>
@@ -120,7 +120,7 @@ Reset Page: <br />
 HTML;
 
 if (isset($_SESSION["SPECIES"])){
-    
+
     echo "<!--";
     // Saving a loaded species
     echo <<< HTML
@@ -132,13 +132,13 @@ if (isset($_SESSION["SPECIES"])){
     </form>
     </div>
 HTML;
-    
+
     echo "-->";
-    if (isset($_POST["input_text"])) {$default_input_text = $_POST["input_text"];} else { $default_input_text = "Input Text";}
-    if (isset($_POST["comparison_text"])) {$default_comparison_text = $_POST["comparison_text"];} else { $default_comparison_text = "Comparison Text";}
+    if (isset($_POST["input_text"])) {$default_input_text = $_POST["input_text"];} else { $default_input_text = "abcdefghijklmnopqrstuvwxyz";}
+    if (isset($_POST["comparison_text"])) {$default_comparison_text = $_POST["comparison_text"];} else { $default_comparison_text = "zyxwvutsrqponmlkjihgfedcba Text";}
     if (isset($_POST["mutation"])) {$default_mutation = $_POST["mutation"];} else { $default_mutation = 9999;}
     if (isset($_POST["lifespan"])) {$default_lifespan = $_POST["lifespan"];} else { $default_lifespan = 2;}
-    
+
     // Breed a selected species
     echo <<< HTML
     <div class="task_group">
@@ -176,4 +176,3 @@ echo '</div>';
 ?>
 </body>
 </html>
-
