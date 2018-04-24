@@ -1,6 +1,4 @@
 <?php
-// The code presented here is ONLY for application evaluation purposes for Joshua Petersen.
-// Permission of any other kind for the code is not given or implied.
 
 // This evolutionary AI builds its code using the the RISC-V TinyRV2 instruction set for inspiration: web.csl.cornell.edu/courses/ece5745/handouts/ece5745-tinyrv-isa.txt but is not designed to be fully compatible, and contains some additional functionality to speed up evolution of the AI to various kinds of interaction.
 require_once("libs/simple_html_dom.php");
