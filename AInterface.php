@@ -135,7 +135,7 @@ HTML;
 
     echo "-->";
     if (isset($_POST["input_text"])) {$default_input_text = $_POST["input_text"];} else { $default_input_text = "abcdefghijklmnopqrstuvwxyz";}
-    if (isset($_POST["comparison_text"])) {$default_comparison_text = $_POST["comparison_text"];} else { $default_comparison_text = "zyxwvutsrqponmlkjihgfedcba Text";}
+    if (isset($_POST["comparison_text"])) {$default_comparison_text = $_POST["comparison_text"];} else { $default_comparison_text = "zyxwvutsrqponmlkjihgfedcba";}
     if (isset($_POST["mutation"])) {$default_mutation = $_POST["mutation"];} else { $default_mutation = 9999;}
     if (isset($_POST["lifespan"])) {$default_lifespan = $_POST["lifespan"];} else { $default_lifespan = 2;}
 
