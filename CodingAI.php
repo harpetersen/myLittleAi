@@ -280,14 +280,12 @@ function breed_new_AIs_1($mutation_rate, $species_name){
  
 
 function breed_AIs_1(&$AI_1, &$AI_2, $mutation_rate){
-    //echo "<div class='task_group'><strong>Mutation Actions for bred AI:</strong>";
     $babyAI = new my_little_AI(get_longest_common_subsequence($AI_1->ID, $AI_2->ID) . rand(1,10000), [], $AI_1->allowed_time); 
     if (count($AI_1->source_code) > count ($AI_2->source_code)){
         $babyAI->source_code = breed_AIs_2($AI_1, $AI_2, $mutation_rate);
     } else {
         $babyAI->source_code = breed_AIs_2($AI_2, $AI_1, $mutation_rate);
     }
-    //echo "</div>";
     return $babyAI;
 }
 function breed_AIs_2(&$AI_1, &$AI_2, $mutation_rate){
@@ -332,8 +330,6 @@ function breed_AIs_2(&$AI_1, &$AI_2, $mutation_rate){
 }
 
 function mutation($array_1, &$target_array, $donar_array) {
-    //echo "<br /><br />mutating parent 1 gene: " . print_r($array_1, true);
-    //echo "<br /><br />mutating parent 2 gene: " . print_r($donar_array, true);
     
     $rand = rand(1,5);
     if (count($target_array) < 2 && $rand == 1){
@@ -349,24 +345,24 @@ function mutation($array_1, &$target_array, $donar_array) {
    }
     switch($rand){
         case 1:
-            //echo " :: Gene Deletion :: ";
+            //:: Gene Deletion ::
             // case one is a deletion mutation, just skipping will result in
             // the gene being deleted.
             return;
         case 2:
-            //echo " :: Genes Rearranged :: ";
+            //:: Genes Rearranged :: 
             // case two is a rearrange mutation
             $position = rand(0, count($target_array));
             array_splice($target_array, $position, 0, array($array_1));
             break;
         case 3:
-            //echo " :: Genetic Duplication :: ";
+            //:: Genetic Duplication ::
             // case three is a duplication mutation
             array_push($target_array, $array_1);
             array_push($target_array, $array_1);
             break;
         case 4:
-            //echo "case4";
+            //:: Rearrangement Mutation ::
             // case four is a static rearrangement mutation... allowing interesting effects on string effects
             $srand = rand(1,4);
             $new_static = "";
@@ -374,22 +370,22 @@ function mutation($array_1, &$target_array, $donar_array) {
             $length = rand(0, strlen($array_1[1]) - $placement);
             switch($srand){
                 case 1:
-                    //echo " :: case - Genetic String Reduction :: ";
+                    //:: case - Genetic String Reduction :: 
                     //deletion
                     $newstring = substr($array_1[1], $placement, $length);
                     break;
                 case 2:
-                    //echo " :: case - Genetic String Recombination :: ";
+                    //:: case - Genetic String Recombination ::
                     //rearrange
                     $newstring = substr($array_1[1], 0, $placement) . substr($array_1[1], $placement + $length, strlen($array_1[1]) - ($placement + $length)) . substr($array_1[1], $placement, $length);
                     break;
                 case 3:
-                    //echo " :: case - Genetic String Repitition :: ";
+                    //:: case - Genetic String Repitition :: 
                     //duplication
                     $newstring = $array_1[1] . substr($array_1[1], $placement, $length);
                     break;
                 case 4:
-                    //echo " :: case - Genetic String new Injection :: ";
+                    //:: case - Genetic String new Injection :: 
                     //injection
                     $random_string_count = rand(0,255);
                     $random_string = '';
@@ -409,7 +405,7 @@ function mutation($array_1, &$target_array, $donar_array) {
             array_push($target_array, [$array_1[0], $newstring, $array_1[2], $array_1[3], $array_1[4]]);
             break;
         case 5:
-            //echo " :: case - Genetic Injection :: ";
+            //:: case - Genetic Injection :: 
             // case five is an injection mutation that adds a new gene
             $genearray = ['STATS', 'STATG','READF', 'READP', 'ADD', 'ADDI', 'SUB', 'MUL', 'ANDB', 'ANDL', 'ANDI', 'ORB', 'ORL', 'ORI', 'XORB', 'XORL', 'XORI', 'SLT', 'SLTI', 'SLTU', 'SLTIU', 'SRA', 'SRAI', 'SRL', 'SRLI', 'SLL', 'SLLI', 'LUI', 'AUIPC', 'JAL', 'JR', 'JALR', 'BEQ', 'BNE', 'BLT', 'BGE', 'BLTU', 'BGEU', 'CSPR', 'CSRW', 'URL', 'OUT1', 'OUT2'];
             $my_gene =  $genearray[array_rand($genearray)];
