@@ -1,6 +1,4 @@
 <?php
-// The code presented here is ONLY for application evaluation purposes for Joshua Petersen.
-// Permission of any other kind for the code is not given or implied.
     require_once('CodingAI.php');
     require_once('libs/common.php');
     
