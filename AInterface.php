@@ -1,6 +1,4 @@
 <?php
-// The code presented here is ONLY for application evaluation purposes for Joshua Petersen.
-// Permission of any other kind for the code is not given or implied.
 require_once("AIGeneration.php");
 $random_form_number = rand(1,99999);
 if (session_status() == PHP_SESSION_NONE) {
@@ -40,8 +38,6 @@ if (isset($_POST["purpose"])){
 echo <<< HTML
 <!DOCTYPE HTML>
 <html>
-<!-- The code presented here is ONLY for application evaluation purposes for Joshua Petersen.
-Permission of any other kind for the code is not given or implied. -->
 <head>
 <meta charset="UTF-8">
 <title>My Little Evolutionary AI</title>
